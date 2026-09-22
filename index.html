@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vincent Rey M. Tinggoy | IT student, web development and networking</title>
+<meta name="description" content="Vincent Rey M. Tinggoy is a fourth-year BS Information Technology student at Bukidnon State University, focused on web development and networking.">
+<meta name="author" content="Vincent Rey M. Tinggoy">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F5F5F8">
+
+<!-- Open Graph / social preview.
+     EDIT AFTER DEPLOY: add og:url (your GitHub Pages address) and og:image (an absolute URL to a 1200x630 image). -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Vincent Rey M. Tinggoy | IT student, web development and networking">
+<meta property="og:description" content="Fourth-year BS Information Technology student at Bukidnon State University, focused on web development and networking.">
+<meta property="og:site_name" content="Vincent Rey M. Tinggoy">
+<meta name="twitter:card" content="summary">
+
+<!-- Structured data for search engines: only facts confirmed elsewhere on this page. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Vincent Rey M. Tinggoy",
+  "description": "IT student focused on web development and networking",
+  "email": "mailto:reyvincentmagpulong@gmail.com",
+  "sameAs": [
+    "https://github.com/vincenttinggoy",
+    "https://www.facebook.com/beeansentt",
+    "https://www.instagram.com/beanceent/"
+  ],
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "Bukidnon State University" },
+  "knowsAbout": ["Web development", "Laravel", "Java", "Networking", "Cisco Packet Tracer"],
+  "hasCredential": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "CCNA: Introduction to Networks",
+      "credentialCategory": "certification",
+      "recognizedBy": { "@type": "Organization", "name": "Cisco Networking Academy" },
+      "dateCreated": "2025-05-16",
+      "url": "https://www.credly.com/badges/e7b3f082-3576-4b88-8241-cbe10fbbcb40"
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "CCNA: Switching, Routing, and Wireless Essentials",
+      "credentialCategory": "certification",
+      "recognizedBy": { "@type": "Organization", "name": "Cisco Networking Academy" },
+      "dateCreated": "2025-12-23",
+      "url": "https://www.credly.com/badges/5f5a6935-54ad-4b6f-90c5-1d79c742d9eb"
+    }
+  ]
+}
+</script>
+
+<!-- Favicon: "VT" wordmark with the accent period, on the page's own background. -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23F5F5F8'/%3E%3Ctext x='5' y='22' font-family='Arial,Helvetica,sans-serif' font-weight='800' font-size='16' letter-spacing='-1' fill='%23262631'%3EVT%3C/text%3E%3Ccircle cx='25' cy='20' r='2.4' fill='%237C3AED'/%3E%3C/svg%3E">
+
+<!-- Fonts: Poppins (bold display) + Inter (reading body) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Loaded without blocking first paint (media swap); the noscript line covers no-JS visitors. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap"></noscript>
+
+<!-- Runs before first paint so the saved (or system) theme applies without a flash. -->
+<script>
+(function () {
+  var t = null;
+  try { t = localStorage.getItem('theme'); } catch (e) {}
+  if (t !== 'light' && t !== 'dark') {
+    t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  document.documentElement.setAttribute('data-theme', t);
+  document.documentElement.classList.add('js');
+})();
+</script>
+
+<style>
+/* Metric-matched fallback so text barely moves when Inter loads (avoids layout shift). */
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Arial");
+  size-adjust: 107.4%;
+  ascent-override: 90.2%;
+  descent-override: 22.5%;
+  line-gap-override: 0%;
+}
+
+/* ==========================================================================
+   1. TOKENS: change colors and sizes here
+   ========================================================================== */
+:root {
+  /* Palette (light): soft gray paper, charcoal ink, one violet accent */
+  --bg:      #F5F5F8;   /* page background */
+  --surface: #FFFFFF;   /* card fill */
+  --ink:     #262631;   /* text, headings */
+  --muted:   #6B6B78;   /* secondary text */
+  --line:    #E4E4EC;   /* hairlines, card borders in dark mode */
+  --accent:  #7C3AED;   /* fills: buttons, icon circles, dot marks */
+  --accent-ink: #7C3AED; /* accent used as TEXT (must clear AA on --bg) */
+  --shadow: 0 16px 40px -20px rgba(38, 22, 82, .25);
+
+  /* Type */
+  --font-head: "Poppins", "Poppins Fallback", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-body: "Inter", "Inter Fallback", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* Layout */
+  --col: 1120px;
+  --gutter: 1.25rem;
+  --track: 1.75rem;      /* certifications timeline track width */
+  --radius: 20px;
+  --radius-pill: 999px;
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  color-scheme: light;
+}
+
+/* Dark mode: near-black violet ground; cards trade the soft shadow for a hairline border. */
+:root[data-theme="dark"] {
+  --bg:      #17151F;
+  --surface: #211E2C;
+  --ink:     #F2F1F6;
+  --muted:   #A6A3B8;
+  --line:    #322D42;
+  --accent:  #7C3AED;
+  --accent-ink: #A78BFA;
+  --shadow: none;
+  color-scheme: dark;
+}
+/* No-JS fallback: follow the system theme. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --bg: #17151F; --surface: #211E2C; --ink: #F2F1F6; --muted: #A6A3B8; --line: #322D42;
+    --accent: #7C3AED; --accent-ink: #A78BFA; --shadow: none;
+    color-scheme: dark;
+  }
+}
+
+/* ==========================================================================
+   2. BASE
+   ========================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: 5rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--muted) var(--bg);
+}
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 1rem/1.7 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3 { font-family: var(--font-head); margin: 0; font-weight: 700; }
+p { margin: 0; text-wrap: pretty; }
+ol, ul { margin: 0; padding: 0; list-style: none; }
+dl, dd { margin: 0; }
+img { display: block; max-width: 100%; }
+img[hidden] { display: none; }
+a { color: inherit; }
+
+::selection { background: var(--accent); color: #FFFFFF; }
+
+:focus-visible {
+  outline: 2px solid var(--accent-ink);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.wrap { width: min(var(--col), 100% - 2 * var(--gutter)); margin-inline: auto; }
+.muted { color: var(--muted); }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+.skip {
+  position: absolute; left: var(--gutter); top: -4rem; z-index: 20;
+  background: var(--ink); color: var(--bg);
+  padding: .5rem .875rem; border-radius: var(--radius-pill);
+  font-size: .875rem; text-decoration: none;
+}
+.skip:focus { top: .75rem; }
+
+/* Link with an underline that draws in on hover/focus */
+.u { position: relative; text-decoration: none; }
+.u::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -.1em; height: 1px;
+  background: currentColor; transform: scaleX(0); transform-origin: left;
+  transition: transform .35s var(--ease);
+}
+.u:hover, .u:focus-visible { color: var(--accent-ink); }
+.u:hover::after, .u:focus-visible::after { transform: scaleX(1); }
+
+.ext { width: .75em; height: .75em; margin-left: .4em; flex: none; transition: transform .25s var(--ease); }
+a:hover .ext, a:focus-visible .ext { transform: translate(1px, -1px); }
+
+/* ==========================================================================
+   3. NAV (sticky)
+   ========================================================================== */
+.site-header { position: sticky; top: 0; z-index: 10; background: var(--bg); }
+
+.nav {
+  position: relative;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: .75rem; min-height: 4.25rem;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  flex: none; font: 800 1.25rem/1 var(--font-head); letter-spacing: -.01em; text-decoration: none;
+}
+.brand .dot { color: var(--accent); }
+
+/* Mobile: the link list is a dropdown panel toggled by .menu-btn; closed by default. */
+.nav-links {
+  display: none;
+  position: absolute; left: 0; right: 0; top: 100%;
+  flex-direction: column; gap: .125rem;
+  background: var(--bg); border-bottom: 1px solid var(--line);
+  padding: .5rem var(--gutter) 1rem;
+}
+.nav-links.is-open { display: flex; }
+.nav-links a { display: block; padding: .7rem 0; font: 500 .9375rem/1.2 var(--font-body); color: var(--muted); }
+.nav-links a::after { bottom: .55rem; }
+.nav-links a:hover, .nav-links a:focus-visible { color: var(--ink); }
+.nav-links a[aria-current="true"] { color: var(--ink); }
+.nav-links a[aria-current="true"]::after { transform: scaleX(1); background: var(--accent-ink); }
+
+.nav-right { display: flex; align-items: center; gap: .625rem; }
+
+.menu-btn {
+  display: grid; place-items: center; width: 2.5rem; height: 2.5rem; flex: none;
+  padding: 0; border: 1.5px solid var(--line); border-radius: 50%;
+  background: transparent; color: var(--ink); cursor: pointer;
+  transition: background-color .2s, color .2s, border-color .2s;
+}
+.menu-btn:hover, .menu-btn:focus-visible { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.menu-btn svg { width: 1.125rem; height: 1.125rem; }
+.menu-btn .i-close { display: none; }
+.menu-btn[aria-expanded="true"] .i-open { display: none; }
+.menu-btn[aria-expanded="true"] .i-close { display: block; }
+
+@media (min-width: 780px) {
+  .menu-btn { display: none; }
+  .nav-links {
+    display: flex !important; position: static; flex-direction: row; column-gap: 1.75rem;
+    background: transparent; border-bottom: 0; padding: 0; margin-inline: auto;
+  }
+  .nav-links a { padding: .8rem 0; font-size: .875rem; }
+}
+
+.nav-cta {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 2.5rem; padding: 0 1.25rem; flex: none;
+  background: var(--accent); color: #FFFFFF; border: none; border-radius: var(--radius-pill);
+  font: 600 .8125rem/1 var(--font-head); text-decoration: none;
+  transition: transform .2s var(--ease), background-color .2s;
+}
+.nav-cta:hover, .nav-cta:focus-visible { transform: translateY(-2px); background: #6D28D9; }
+
+.toggle {
+  display: grid; place-items: center; width: 2.5rem; height: 2.5rem; flex: none;
+  padding: 0; border: 1.5px solid var(--line); border-radius: 50%;
+  background: transparent; color: var(--ink); cursor: pointer;
+  transition: background-color .2s, color .2s, border-color .2s;
+}
+.toggle:hover, .toggle:focus-visible { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.toggle svg { width: 1.0625rem; height: 1.0625rem; transition: transform .5s var(--ease); }
+:root[data-theme="dark"] .toggle svg { transform: rotate(180deg); }
+
+/* ==========================================================================
+   4. HERO
+   ========================================================================== */
+.hero { padding-block: clamp(2.5rem, 7vw, 4.5rem) 0; }
+
+.hero-grid {
+  display: grid; gap: 2.5rem;
+  grid-template-columns: 1fr;
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .hero-grid { grid-template-columns: 1.15fr 1fr; gap: 4vw; }
+}
+
+h1 {
+  font-size: clamp(2rem, 4.6vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1.12; letter-spacing: -.015em;
+  text-wrap: balance;
+}
+h1 .accent { color: var(--accent-ink); }
+
+.role {
+  margin-top: .5rem;
+  font: 700 clamp(1.25rem, 3vw, 1.75rem)/1.3 var(--font-head);
+  letter-spacing: -.01em;
+}
+.intro { margin-top: 1.25rem; max-width: 52ch; color: var(--muted); font-size: 1.0625rem; }
+
+.actions { display: flex; flex-wrap: wrap; gap: .875rem; margin-top: 2rem; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 3rem; padding: 0 1.75rem;
+  border: 2px solid transparent; border-radius: var(--radius-pill);
+  font: 600 .9375rem/1 var(--font-head); text-decoration: none; cursor: pointer;
+  transition: background-color .2s, border-color .2s, color .2s, transform .2s var(--ease);
+}
+.btn:hover, .btn:focus-visible { transform: translateY(-2px); }
+.btn--solid { background: var(--accent); color: #FFFFFF; }
+.btn--solid:hover, .btn--solid:focus-visible { background: #6D28D9; }
+.btn--ghost { background: transparent; border-color: var(--accent-ink); color: var(--accent-ink); }
+.btn--ghost:hover, .btn--ghost:focus-visible { background: var(--accent); border-color: var(--accent); color: #FFFFFF; }
+
+.socials { display: flex; gap: .75rem; margin-top: 2rem; }
+.social {
+  display: grid; place-items: center; width: 2.5rem; height: 2.5rem;
+  border-radius: 50%; background: var(--accent); color: #FFFFFF;
+  transition: transform .2s var(--ease), background-color .2s;
+}
+.social:hover, .social:focus-visible { background: #6D28D9; transform: translateY(-2px); }
+.social svg { width: 1.0625rem; height: 1.0625rem; }
+
+/* Portrait: soft rounded photo with a blurred accent glow behind it. No hard frame. */
+.portrait-wrap { position: relative; width: min(100%, 24rem); margin-inline: auto; }
+.portrait-wrap::before {
+  content: ""; position: absolute; inset: -6%;
+  background: radial-gradient(closest-side, var(--accent), transparent 72%);
+  opacity: .22; filter: blur(50px); z-index: 0;
+}
+.portrait {
+  position: relative; z-index: 1; display: grid; place-items: center; overflow: hidden;
+  aspect-ratio: 4 / 5; border-radius: var(--radius);
+  background: var(--surface); box-shadow: var(--shadow);
+  font: 800 2rem/1 var(--font-head); letter-spacing: -.02em; color: var(--muted);
+}
+.portrait::before { content: attr(data-initials); }
+.portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+/* ==========================================================================
+   5. SECTIONS
+   ========================================================================== */
+.section { margin-top: clamp(4.5rem, 9vw, 6.5rem); }
+
+.section-head { margin-bottom: 2rem; }
+.section-head h2 {
+  display: flex; align-items: center; gap: .625rem;
+  font-size: clamp(1.5rem, 3vw, 1.875rem); line-height: 1.2; letter-spacing: -.015em;
+}
+.dot-mark { flex: none; width: .625rem; height: .625rem; border-radius: 50%; background: var(--accent); }
+
+/* About */
+.about { display: grid; gap: 1.1rem; max-width: 65ch; font-size: 1.0625rem; }
+
+/* Skills: category rows of pill chips */
+.skills { display: grid; gap: 1.5rem; }
+.skill-row dt { font: 600 .9375rem/1 var(--font-head); margin-bottom: .75rem; }
+.chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+.chip {
+  background: var(--surface); box-shadow: var(--shadow);
+  border: 1px solid var(--line); border-radius: var(--radius-pill);
+  padding: .4rem .95rem; font: 500 .875rem/1.2 var(--font-body);
+}
+:root[data-theme="dark"] .chip { box-shadow: none; }
+
+/* Projects: soft-shadow cards */
+.projects { display: grid; gap: 1.25rem; }
+.project-card {
+  background: var(--surface); box-shadow: var(--shadow);
+  border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 1.75rem;
+}
+:root[data-theme="dark"] .project-card { box-shadow: none; }
+.project-card h3 { font-size: 1.25rem; letter-spacing: -.01em; }
+.kind { margin-top: .5rem; font-size: .9375rem; line-height: 1.55; }
+.stack { margin-top: .5rem; font-size: .8125rem; line-height: 1.5; color: var(--muted); }
+.meta {
+  display: flex; flex-wrap: wrap; align-items: center; gap: .625rem 1rem;
+  margin-top: 1.25rem; font-size: .8125rem;
+}
+.tag {
+  border: 1px solid var(--line); border-radius: var(--radius-pill);
+  padding: .2rem .75rem; font-weight: 600;
+}
+.pill-link {
+  display: inline-flex; align-items: center; gap: .35rem; margin-left: auto;
+  border: 1.5px solid var(--accent-ink); border-radius: var(--radius-pill);
+  padding: .45rem 1rem; font: 600 .8125rem/1 var(--font-head); text-decoration: none;
+  color: var(--accent-ink);
+  transition: background-color .2s, color .2s;
+}
+.pill-link:hover, .pill-link:focus-visible { background: var(--accent); border-color: var(--accent); color: #FFFFFF; }
+.pill-link:hover .ext, .pill-link:focus-visible .ext { transform: translate(1px, -1px); }
+
+/* Certifications: timeline of dots + soft-shadow cards */
+.timeline { position: relative; display: grid; gap: 1.5rem; }
+.cert { position: relative; display: grid; grid-template-columns: var(--track) 1fr; }
+.cert-dot {
+  position: relative; justify-self: center; margin-top: .35rem;
+  width: 12px; height: 12px; border-radius: 50%;
+  border: 2px solid var(--line); background: var(--surface);
+}
+.cert:last-child .cert-dot { background: var(--accent); border-color: var(--accent); }
+.cert::before {
+  content: ""; position: absolute; left: calc(var(--track) / 2 - .5px); top: 1.35rem; bottom: -1.5rem;
+  width: 1px; background: var(--line);
+}
+.cert:last-child::before { display: none; }
+.cert-card {
+  background: var(--surface); box-shadow: var(--shadow);
+  border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem 1.75rem;
+}
+:root[data-theme="dark"] .cert-card { box-shadow: none; }
+.cert-card time { display: block; font-size: .8125rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.cert-card h3 { margin-top: .375rem; font-size: 1.125rem; letter-spacing: -.01em; }
+.cert-card p { margin-top: .375rem; font-size: .9375rem; line-height: 1.55; color: var(--muted); }
+.cert-card p + p { margin-top: 0; }
+.cert-card .pill-link { margin-top: 1.1rem; margin-left: 0; }
+
+/* Contact: two soft-shadow cards */
+.contact-grid { display: grid; gap: 1.25rem; }
+@media (min-width: 560px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
+.contact-card {
+  background: var(--surface); box-shadow: var(--shadow);
+  border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem 1.75rem;
+}
+:root[data-theme="dark"] .contact-card { box-shadow: none; }
+.contact-card dt { font-size: .8125rem; color: var(--muted); }
+.contact-card dd { margin-top: .5rem; font: 600 1.1875rem/1.4 var(--font-head); letter-spacing: -.01em; overflow-wrap: anywhere; }
+.contact-card dd a { display: inline-flex; align-items: center; }
+
+/* ==========================================================================
+   6. FOOTER
+   ========================================================================== */
+.site-footer { margin-top: clamp(4.5rem, 9vw, 6.5rem); }
+.footer-inner {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: .25rem 1.5rem;
+  border-top: 1px solid var(--line); padding-block: 1.5rem 3rem;
+  font-size: .8125rem; color: var(--muted);
+}
+
+/* ==========================================================================
+   7. MOTION: soft fade on scroll (content is visible without JS)
+   ========================================================================== */
+.js .reveal {
+  opacity: 0; transform: translateY(12px);
+  transition: opacity .8s var(--ease), transform .8s var(--ease);
+  transition-delay: var(--d, 0ms);
+}
+.js .reveal.is-in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .u::after, .ext, .toggle svg, .btn, .social, .nav-cta { transition: none; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- SVG sprite: external-link arrow -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-ext" viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<a class="skip" href="#about">Skip to content</a>
+
+<!-- ==========================================================================
+     NAV
+     ========================================================================== -->
+<header class="site-header">
+  <div class="wrap">
+    <div class="nav">
+      <a class="brand" href="#top" aria-label="Vincent Tinggoy, back to top">VT<span class="dot">.</span></a>
+      <nav aria-label="Primary" class="nav-links" id="nav-links">
+        <a class="u" href="#about">About</a>
+        <a class="u" href="#skills">Skills</a>
+        <a class="u" href="#projects">Projects</a>
+        <a class="u" href="#certifications">Certifications</a>
+        <a class="u" href="#contact">Contact</a>
+      </nav>
+      <div class="nav-right">
+        <a class="nav-cta" href="mailto:reyvincentmagpulong@gmail.com">Say Hello</a>
+        <button class="toggle" id="theme-toggle" type="button" aria-label="Dark mode" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <circle cx="12" cy="12" r="8.5"/>
+            <path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor" stroke="none"/>
+          </svg>
+        </button>
+        <button class="menu-btn" id="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+          <svg class="i-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <svg class="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ==========================================================================
+     HERO
+     ========================================================================== -->
+<section class="hero wrap" id="top" aria-labelledby="name">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <h1 id="name">Hi, I'm <span class="accent">Vincent Rey M. Tinggoy</span></h1>
+      <p class="role reveal" style="--d:60ms">IT student focused on web development and networking</p>
+      <p class="intro reveal" style="--d:120ms">I'm a fourth-year student who contributes to team web projects. I've also completed two Cisco networking courses.</p>
+
+      <div class="actions reveal" style="--d:180ms">
+        <a class="btn btn--solid" href="mailto:reyvincentmagpulong@gmail.com">Email Me</a>
+        <a class="btn btn--ghost" href="#projects">See Projects</a>
+      </div>
+
+      <div class="socials reveal" style="--d:240ms">
+        <a class="social" href="https://github.com/vincenttinggoy" target="_blank" rel="noopener noreferrer" aria-label="Vincent on GitHub (opens in a new tab)">
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        </a>
+        <a class="social" href="https://www.facebook.com/beeansentt" target="_blank" rel="noopener noreferrer" aria-label="Vincent on Facebook (opens in a new tab)">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a class="social" href="https://www.instagram.com/beanceent/" target="_blank" rel="noopener noreferrer" aria-label="Vincent on Instagram (opens in a new tab)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- EDIT: put your photo next to this file and name it profile.jpg (portrait, roughly 4:5, 400x500 or larger) -->
+    <div class="portrait-wrap reveal" style="--d:120ms">
+      <div class="portrait" data-initials="VT">
+        <img src="profile.jpg" width="352" height="440" alt="Portrait of Vincent Rey M. Tinggoy" decoding="async" fetchpriority="high" onerror="this.hidden=true">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     ABOUT
+     ========================================================================== -->
+<section class="section wrap" id="about" aria-labelledby="about-h">
+  <div class="section-head reveal"><h2 id="about-h"><span class="dot-mark" aria-hidden="true"></span>About</h2></div>
+  <div class="about reveal">
+    <p>I'm a fourth-year BS Information Technology student at Bukidnon State University, focused on web development and networking.</p>
+    <p>I learn by building with teams, and every project below was a team effort where I contributed a part.</p>
+    <p>My networking background comes from Cisco Networking Academy courses I took with the university.</p>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     SKILLS (plain text, shown as chips: no bars, no percentages)
+     ========================================================================== -->
+<section class="section wrap" id="skills" aria-labelledby="skills-h">
+  <div class="section-head reveal"><h2 id="skills-h"><span class="dot-mark" aria-hidden="true"></span>Skills</h2></div>
+  <dl class="skills reveal">
+    <div class="skill-row">
+      <dt>Development</dt>
+      <dd class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">Laravel</span><span class="chip">Java</span></dd>
+    </div>
+    <div class="skill-row">
+      <dt>Networking</dt>
+      <dd class="chips"><span class="chip">Basic Networking</span><span class="chip">Cisco Packet Tracer</span></dd>
+    </div>
+    <div class="skill-row">
+      <dt>Tools</dt>
+      <dd class="chips"><span class="chip">Canva</span><span class="chip">Excel</span><span class="chip">Word</span><span class="chip">Google Docs</span><span class="chip">Google Sheets</span></dd>
+    </div>
+    <!-- AI tools used during development -->
+    <div class="skill-row">
+      <dt>AI for development</dt>
+      <dd class="chips"><span class="chip">Claude</span><span class="chip">Codex / ChatGPT</span><span class="chip">Antigravity / Gemini</span></dd>
+    </div>
+  </dl>
+</section>
+
+<!-- ==========================================================================
+     PROJECTS
+     All five are team projects. Role is "Contributor" on every one.
+     PER PROJECT, EDIT: the GitHub href (currently your profile URL; swap in the repo link).
+     ========================================================================== -->
+<section class="section wrap" id="projects" aria-labelledby="projects-h">
+  <div class="section-head reveal"><h2 id="projects-h"><span class="dot-mark" aria-hidden="true"></span>Projects</h2></div>
+
+  <ol class="projects">
+
+    <!-- Jam's Gadget -->
+    <li class="project-card reveal">
+      <article>
+        <h3>Jam's Gadget</h3>
+        <p class="kind">Inventory App</p>
+        <p class="stack">Java, Android Studio</p>
+        <div class="meta">
+          <span class="tag">Contributor</span>
+          <span class="muted">Academic project</span>
+          <a class="pill-link" href="https://github.com/vincenttinggoy" target="_blank" rel="noopener noreferrer">GitHub<svg class="ext" aria-hidden="true"><use href="#i-ext"/></svg><span class="sr-only"> for Jam's Gadget (opens in a new tab)</span></a>
+        </div>
+      </article>
+    </li>
+
+    <!-- CPAG Research Archive -->
+    <li class="project-card reveal">
+      <article>
+        <h3>CPAG Research Archive</h3>
+        <p class="kind">Full-stack app for organizing and retrieving graduate research documents, with search and structured metadata management.</p>
+        <p class="stack">MongoDB, Express.js, React, Node.js (MERN)</p>
+        <div class="meta">
+          <span class="tag">Contributor</span>
+          <span class="muted">Academic project</span>
+          <a class="pill-link" href="https://github.com/ToffDarell/CPAG-Graduates-Research-Monitoring-System" target="_blank" rel="noopener noreferrer">GitHub<svg class="ext" aria-hidden="true"><use href="#i-ext"/></svg><span class="sr-only"> for CPAG Research Archive (opens in a new tab)</span></a>
+        </div>
+      </article>
+    </li>
+
+    <!-- PayMonitor -->
+    <li class="project-card reveal">
+      <article>
+        <h3>PayMonitor</h3>
+        <p class="kind">Lending Management SaaS</p>
+        <p class="stack">Laravel, MySQL, stancl/tenancy, Spatie, DomPDF</p>
+        <div class="meta">
+          <span class="tag">Contributor</span>
+          <span class="muted">Academic project</span>
+          <a class="pill-link" href="https://github.com/ToffDarell/PayMonitor" target="_blank" rel="noopener noreferrer">GitHub<svg class="ext" aria-hidden="true"><use href="#i-ext"/></svg><span class="sr-only"> for PayMonitor (opens in a new tab)</span></a>
+        </div>
+      </article>
+    </li>
+
+    <!-- SafeRide -->
+    <li class="project-card reveal">
+      <article>
+        <h3>SafeRide</h3>
+        <p class="kind">AI Helmet Detection System</p>
+        <p class="stack">YOLOv11, OpenCV, PyTorch, Django REST, React + TypeScript</p>
+        <div class="meta">
+          <span class="tag">Contributor</span>
+          <span class="muted">Capstone project</span>
+          <a class="pill-link" href="https://github.com/ToffDarell/SAFERIDEWEB" target="_blank" rel="noopener noreferrer">GitHub<svg class="ext" aria-hidden="true"><use href="#i-ext"/></svg><span class="sr-only"> for SafeRide (opens in a new tab)</span></a>
+        </div>
+      </article>
+    </li>
+
+    <!-- Blackout Esports -->
+    <li class="project-card reveal">
+      <article>
+        <h3>Blackout Esports</h3>
+        <p class="kind">Reservation System</p>
+        <p class="stack">PHP, MySQL, JavaScript</p>
+        <div class="meta">
+          <span class="tag">Contributor</span>
+          <span class="muted">Academic project</span>
+          <a class="pill-link" href="https://github.com/ToffDarell/BLACKOUTESPORTS" target="_blank" rel="noopener noreferrer">GitHub<svg class="ext" aria-hidden="true"><use href="#i-ext"/></svg><span class="sr-only"> for Blackout Esports (opens in a new tab)</span></a>
+        </div>
+      </article>
+    </li>
+
+  </ol>
+</section>
+
+<!-- ==========================================================================
+     CERTIFICATIONS (timeline, oldest first)
+     ========================================================================== -->
+<section class="section wrap" id="certifications" aria-labelledby="certs-h">
+  <div class="section-head reveal"><h2 id="certs-h"><span class="dot-mark" aria-hidden="true"></span>Certifications</h2></div>
+
+  <ol class="timeline">
+    <li class="cert reveal">
+      <span class="cert-dot" aria-hidden="true"></span>
+      <div class="cert-card">
+        <time datetime="2025-05-16">May 16, 2025</time>
+        <h3>CCNA: Introduction to Networks</h3>
+        <p>Cisco Networking Academy with Bukidnon State University</p>
+        <p>70 hours</p>
+        <a class="pill-link" href="https://www.credly.com/badges/e7b3f082-3576-4b88-8241-cbe10fbbcb40" target="_blank" rel="noopener noreferrer">Verify on Credly<svg class="ext" aria-hidden="true"><use href="#i-ext"/></svg><span class="sr-only"> for CCNA: Introduction to Networks (opens in a new tab)</span></a>
+      </div>
+    </li>
+    <li class="cert reveal">
+      <span class="cert-dot" aria-hidden="true"></span>
+      <div class="cert-card">
+        <time datetime="2025-12-23">Dec 23, 2025</time>
+        <h3>CCNA: Switching, Routing, and Wireless Essentials</h3>
+        <p>Cisco Networking Academy with Bukidnon State University</p>
+        <p>70 hours</p>
+        <a class="pill-link" href="https://www.credly.com/badges/5f5a6935-54ad-4b6f-90c5-1d79c742d9eb" target="_blank" rel="noopener noreferrer">Verify on Credly<svg class="ext" aria-hidden="true"><use href="#i-ext"/></svg><span class="sr-only"> for CCNA: Switching, Routing, and Wireless Essentials (opens in a new tab)</span></a>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<!-- ==========================================================================
+     CONTACT
+     ========================================================================== -->
+<section class="section wrap" id="contact" aria-labelledby="contact-h">
+  <div class="section-head reveal"><h2 id="contact-h"><span class="dot-mark" aria-hidden="true"></span>Contact</h2></div>
+  <div class="contact-grid reveal">
+    <div class="contact-card">
+      <dl><div><dt>Email</dt><dd><a class="u" href="mailto:reyvincentmagpulong@gmail.com">reyvincentmagpulong@gmail.com</a></dd></div></dl>
+    </div>
+    <div class="contact-card">
+      <dl><div><dt>GitHub</dt><dd><a class="u" href="https://github.com/vincenttinggoy" target="_blank" rel="noopener noreferrer">github.com/vincenttinggoy<svg class="ext" aria-hidden="true"><use href="#i-ext"/></svg><span class="sr-only"> (opens in a new tab)</span></a></dd></div></dl>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ==========================================================================
+     FOOTER
+     ========================================================================== -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-inner">
+      <p>&copy; <span id="year">2026</span> Vincent Rey M. Tinggoy</p>
+      <p>Bukidnon State University</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+
+  /* ---- Footer year ---- */
+  var year = document.getElementById('year');
+  if (year) year.textContent = new Date().getFullYear();
+
+  /* ---- Theme toggle (saved in localStorage when available) ---- */
+  var toggle = document.getElementById('theme-toggle');
+  var themeMeta = document.querySelector('meta[name="theme-color"]');
+  function paint(theme) {
+    root.setAttribute('data-theme', theme);
+    toggle.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+    if (themeMeta) themeMeta.setAttribute('content', theme === 'dark' ? '#17151F' : '#F5F5F8');
+  }
+  paint(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+  toggle.addEventListener('click', function () {
+    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    paint(next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  });
+
+  /* ---- Mobile menu (dropdown panel under the nav) ---- */
+  var menuBtn = document.getElementById('menu-btn');
+  var navLinks = document.getElementById('nav-links');
+  function closeMenu() {
+    navLinks.classList.remove('is-open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+  }
+  menuBtn.addEventListener('click', function () {
+    var open = navLinks.classList.toggle('is-open');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  navLinks.addEventListener('click', function (e) {
+    if (e.target.closest('a')) closeMenu();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeMenu();
+  });
+
+  /* ---- Soft fade-in on scroll ---- */
+  var items = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var reveal = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('is-in'); reveal.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+    items.forEach(function (el) { reveal.observe(el); });
+  } else {
+    items.forEach(function (el) { el.classList.add('is-in'); });
+  }
+
+  /* ---- Active section highlight in the nav ---- */
+  var links = document.querySelectorAll('.nav-links a');
+  var sections = document.querySelectorAll('main section[id]');
+  function setActive(id) {
+    links.forEach(function (a) {
+      if (a.getAttribute('href') === '#' + id) a.setAttribute('aria-current', 'true');
+      else a.removeAttribute('aria-current');
+    });
+  }
+  if ('IntersectionObserver' in window) {
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) setActive(e.target.id); });
+    }, { rootMargin: '-30% 0px -65% 0px' });
+    sections.forEach(function (s) { spy.observe(s); });
+  }
+  // The last section is short, so it may never reach the band above: mark it at page end.
+  window.addEventListener('scroll', function () {
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) setActive('contact');
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>
