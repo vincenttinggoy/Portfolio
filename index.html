@@ -91,14 +91,14 @@
    1. TOKENS: change colors and sizes here
    ========================================================================== */
 :root {
-  /* Palette (light): soft gray paper, charcoal ink, one violet accent */
+  /* Palette (light): soft gray paper, charcoal ink, one black accent */
   --bg:      #F5F5F8;   /* page background */
   --surface: #FFFFFF;   /* card fill */
   --ink:     #262631;   /* text, headings */
   --muted:   #6B6B78;   /* secondary text */
   --line:    #E4E4EC;   /* hairlines, card borders in dark mode */
-  --accent:  #7C3AED;   /* fills: buttons, icon circles, dot marks */
-  --accent-ink: #7C3AED; /* accent used as TEXT (must clear AA on --bg) */
+  --accent:  #000000;   /* fills: buttons, icon circles, dot marks */
+  --accent-ink: #000000; /* accent used as TEXT */
   --shadow: 0 16px 40px -20px rgba(38, 22, 82, .25);
 
   /* Type */
@@ -123,8 +123,8 @@
   --ink:     #F2F1F6;
   --muted:   #A6A3B8;
   --line:    #322D42;
-  --accent:  #7C3AED;
-  --accent-ink: #A78BFA;
+  --accent:  #000000;
+  --accent-ink: #000000;
   --shadow: none;
   color-scheme: dark;
 }
@@ -132,7 +132,7 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
     --bg: #17151F; --surface: #211E2C; --ink: #F2F1F6; --muted: #A6A3B8; --line: #322D42;
-    --accent: #7C3AED; --accent-ink: #A78BFA; --shadow: none;
+    --accent: #000000; --accent-ink: #000000; --shadow: none;
     color-scheme: dark;
   }
 }
@@ -299,6 +299,7 @@ h1 {
   text-wrap: balance;
 }
 h1 .accent { color: var(--accent-ink); }
+:root[data-theme="dark"] h1 .accent { color: #FFFFFF; }
 
 .role {
   margin-top: .5rem;
